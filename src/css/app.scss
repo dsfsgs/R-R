@@ -1,0 +1,198 @@
+/* =========================================================
+   GLOBAL TYPOGRAPHY SYSTEM
+   ---------------------------------------------------------
+   Paste this into src/css/app.scss.
+   Single source of truth for fonts across the whole app.
+
+   Font:   Inter (falls back to system UI fonts)
+   Scale:  11 / 12 / 13 / 14 / 16 / 18 / 22 px
+   Weight: 400 / 500 / 600 / 700
+
+   ROLE MAP
+     --fs-2xl  Page title
+     --fs-xl   Dialog title / confirmation title
+     --fs-lg   Emphasis (profile name, summary numbers)
+     --fs-md   Header office name, card titles
+     --fs-base Body, table cells, inputs, nav items, buttons
+     --fs-sm   Sub-titles, helper text, meta, pagination
+     --fs-xs   Overlines, table headers, badges, captions
+========================================================= */
+
+/* Load Inter. If your app.scss starts with @use / @import lines,
+   keep this AFTER them — or delete it and put the <link> in
+   index.html instead (see instructions). */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* Family */
+  --font-sans: "Poppins", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+
+  /* Size scale */
+  --fs-xs: 11px;
+  --fs-sm: 12px;
+  --fs-base: 13px;
+  --fs-md: 14px;
+  --fs-lg: 16px;
+  --fs-xl: 18px;
+  --fs-2xl: 22px;
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Line heights */
+  --lh-tight: 1.25;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* Letter spacing */
+  --ls-caps: 0.6px;
+}
+
+/* Slightly smaller headings on phones */
+@media (max-width: 600px) {
+  :root {
+    --fs-md: 13px;
+    --fs-xl: 16px;
+    --fs-2xl: 19px;
+  }
+}
+
+/* ---------- Base ---------- */
+html,
+body,
+#q-app {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Quasar headings → use the scale */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  line-height: var(--lh-tight);
+  letter-spacing: normal;
+}
+
+/* ---------- Buttons ---------- */
+.q-btn {
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.1px;
+}
+
+/* ---------- Form fields ---------- */
+.q-field__native,
+.q-field__input,
+.q-field__prefix,
+.q-field__suffix,
+.q-select__dropdown-icon {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+}
+
+.q-field--float .q-field__label,
+.q-field__label {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+}
+
+.q-field--float .q-field--labeled .q-field__label {
+  font-size: var(--fs-sm);
+}
+
+.q-field__bottom,
+.q-field__messages,
+.q-field__counter {
+  font-size: var(--fs-xs);
+  line-height: var(--lh-normal);
+}
+
+.q-field input::placeholder {
+  font-size: var(--fs-base);
+}
+
+/* ---------- Menus / dropdown lists ---------- */
+.q-item__label,
+.q-menu .q-item {
+  font-size: var(--fs-base);
+}
+
+.q-item__label--caption {
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Checkbox / radio / toggle labels ---------- */
+.q-checkbox__label,
+.q-radio__label,
+.q-toggle__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+/* ---------- Tables ---------- */
+.q-table {
+  font-size: var(--fs-base);
+}
+
+.q-table th {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-caps);
+  text-transform: uppercase;
+}
+
+.q-table td {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+}
+
+.q-table--dense .q-table th,
+.q-table--dense .q-table td {
+  font-size: var(--fs-sm);
+}
+
+.q-table--dense .q-table th {
+  font-size: var(--fs-xs);
+}
+
+.q-table__bottom,
+.q-table__bottom .q-field__native,
+.q-table__bottom .q-select__dropdown-icon,
+.q-table__control {
+  font-size: var(--fs-sm);
+}
+
+.q-table__title {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+}
+
+/* ---------- Tooltip / Badge / Notify ---------- */
+.q-tooltip {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+}
+
+.q-badge {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+}
+
+.q-notification__message {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+}
