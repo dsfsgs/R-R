@@ -3,9 +3,9 @@
     <!-- PAGE HEADER -->
     <section class="page-header">
       <div class="page-header-text">
-        <h6 class="page-title">Employee Loyalty</h6>
+        <h6 class="page-title">Profile of Loyalty Awardees</h6>
         <p class="page-subtitle">
-          Generated loyalty entries and years of service across all employees.
+          Generated loyalty entries and years of service of loyaltee awardees.
         </p>
       </div>
 
@@ -525,21 +525,6 @@
                 </q-td>
               </template>
 
-              <template #body-cell-honorees="props">
-                <q-td :props="props">
-                  <div class="cell-years">
-                    {{ props.row.HonoreesService || "—" }}
-                  </div>
-                  <div
-                    v-if="props.row.HonoreesServiceStartDate"
-                    class="cell-date"
-                  >
-                    <q-icon name="event" size="11px" />
-                    Since {{ formatDate(props.row.HonoreesServiceStartDate) }}
-                  </div>
-                </q-td>
-              </template>
-
               <!-- ACTIONS: service record only -->
               <template #body-cell-actions="props">
                 <q-td :props="props" class="cell-actions">
@@ -609,19 +594,6 @@
                         >
                           Since
                           {{ formatDate(props.row.LoyaltyServiceStartDate) }}
-                        </div>
-                      </dd>
-                    </div>
-                    <div class="card-field">
-                      <dt>Honorees Service</dt>
-                      <dd>
-                        {{ props.row.HonoreesService || "—" }}
-                        <div
-                          v-if="props.row.HonoreesServiceStartDate"
-                          class="card-sub"
-                        >
-                          Since
-                          {{ formatDate(props.row.HonoreesServiceStartDate) }}
                         </div>
                       </dd>
                     </div>
@@ -853,6 +825,8 @@ import ServiceRecordDialog from "src/components/ServiceRecordDialog.vue";
 
 /* =========================================================
    COLUMNS — EMPLOYEES
+   (Honorees columns intentionally omitted — backend
+   does not return them on the index endpoint.)
 ========================================================= */
 const COLUMNS = [
   {
@@ -895,22 +869,15 @@ const COLUMNS = [
   },
   {
     name: "total_years",
-    label: "TOTAL SERVICE",
+    label: "TOTAL YEARS OF SERVICE",
     field: "TotalYearsOfService",
     align: "left",
     style: "width: 160px",
   },
   {
     name: "loyalty",
-    label: "LOYALTY SERVICE",
+    label: "GOV'T YEARS OF SERVICE",
     field: "LoyaltyService",
-    align: "left",
-    style: "width: 180px",
-  },
-  {
-    name: "honorees",
-    label: "HONOREES SERVICE",
-    field: "HonoreesService",
     align: "left",
     style: "width: 180px",
   },
@@ -2758,7 +2725,7 @@ export default defineComponent({
 
 @media (min-width: 1024px) {
   .loyalty-table {
-    min-width: 1250px;
+    min-width: 1070px;
   }
 
   .loyalty-table.entries-table {
